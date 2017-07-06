@@ -119,19 +119,19 @@
           numpad.css(settings.padStyle);
         }
         numpad.css({
-          'position': settings.padDisplayOver === true ? 'absolute' : 'relative',
-          'top': numpadTop,
-          'left': numpadLeft + diffLeft,
-          'zIndex': 9999,
-          'marginTop': '2px',
-          'marginBottom': '5px',
-          'boxSizing': 'border-box'
+          position: settings.padDisplayOver === true ? 'absolute' : 'relative',
+          top: numpadTop,
+          left: numpadLeft + diffLeft,
+          zIndex: 9999,
+          marginTop: '2px',
+          marginBottom: '5px',
+          boxSizing: 'border-box'
         })
         .outerWidth(settings.buttonWidth * numpadColumns)
         .height(settings.buttonHeight * numpadLines);
 
         $.each(numpadButtons(), function (index, button) {
-          var buttonWidth = 100 / 3;//settings.buttonWidth;
+          var buttonWidth = 100 / 3;
 
           if (settings.buttonStyle && typeof settings.buttonStyle === "object") {
             button.css(settings.buttonStyle);
@@ -142,10 +142,12 @@
           if (index === 'button_clr' || index === 'button_ok') {
             buttonWidth = buttonWidth * numpadColumns;
           }
-          button.height(settings.buttonHeight).width(buttonWidth + "%");
+
           button.css({
-            'float': 'left',
-            'box-sizing': 'border-box'
+            float: 'left',
+            boxSizing: 'border-box',
+            width: buttonWidth.toString().concat("%"),
+            height: settings.buttonHeight
           });
 
           button.appendTo(numpad);
